@@ -42,3 +42,26 @@ def test_count_letter_frequencies_using_counter_returns_correct_histogram(
 def test_get_total_max_frequencies(nums, want):
     got = cp.get_total_max_frequencies(nums)
     assert got == want
+
+
+@pytest.mark.parametrize(
+    ("logs", "want"),
+    [
+        (
+            [
+                [1980, 1990],
+                [1975, 1985],
+                [1985, 1995],
+                [1990, 2000],
+                [1999, 2020],
+                [1994, 2032],
+            ],
+            1994,
+        ),
+        ([[1970, 1990], [1980, 2009], [1960, 1970], [1959, 1982]], 1980),
+        ([[2000, 2010], [2005, 2015], [2010, 2020], [2015, 2025]], 2005),
+    ],
+)
+def test_get_max_population_year(logs, want):
+    got = cp.get_max_population_year(logs, 1950, 2050)
+    assert want == got
