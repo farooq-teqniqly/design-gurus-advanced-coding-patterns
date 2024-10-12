@@ -1,18 +1,8 @@
 from collections import Counter
-from typing import Callable, Dict, List
+from typing import Dict, List
 
 
-def count_letter_frequencies(
-    input_str: str, counter_func: Callable[[str], Dict[str, int]]
-) -> dict:
-    return counter_func(input_str)
-
-
-def counter_counter_func(input_str: str) -> Dict[str, int]:
-    return Counter(input_str)
-
-
-def dict_counter_func(input_str: str) -> Dict[str, int]:
+def count_letter_frequencies(input_str: str) -> Dict[str, int]:
     histogram = {}
 
     for ch in input_str:
