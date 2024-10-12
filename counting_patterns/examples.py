@@ -1,4 +1,3 @@
-from collections import Counter
 from typing import Dict, List
 
 
@@ -12,16 +11,22 @@ def count_letter_frequencies(input_str: str) -> Dict[str, int]:
 
 
 def get_total_max_frequencies(nums: List[int]) -> int:
-    c = Counter(nums)
-    frequencies = c.most_common()
-    max_frequency = frequencies[0][1]
-    total = max_frequency
+    frequencies = {}
 
-    for num, frequency in frequencies[1:]:
-        if frequency == max_frequency:
-            total += frequency
+    for n in nums:
+        frequencies[n] = frequencies.get(n, 0) + 1
 
-    return total
+    max_frequency = 0
+    sum_of_max_frequency = 0
+
+    for _, frequency in frequencies.items():
+        if frequency > max_frequency:
+            max_frequency = frequency
+            sum_of_max_frequency += frequency
+        elif frequency == max_frequency:
+            sum_of_max_frequency += frequency
+
+    return sum_of_max_frequency
 
 
 def get_max_population_year(
