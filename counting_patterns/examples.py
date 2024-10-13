@@ -54,7 +54,7 @@ def get_max_population_year(
     return start_year + max_index
 
 
-def min_increment_to_make_array_unique(nums: List[int]) -> int:
+def min_steps_to_make_array_unique(nums: List[int]) -> int:
     max_value = -1
 
     for n in nums:
