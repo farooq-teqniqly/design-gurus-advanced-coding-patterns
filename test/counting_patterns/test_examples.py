@@ -1,7 +1,6 @@
 import pytest
 
 import counting_patterns.examples as cp
-from counting_patterns.examples import min_steps_to_make_array_unique
 
 
 @pytest.mark.parametrize(
@@ -62,5 +61,14 @@ def test_get_max_population_year(logs, want):
     ],
 )
 def test_min_steps_to_make_array_unique(nums, want):
-    got = min_steps_to_make_array_unique(nums)
+    got = cp.min_steps_to_make_array_unique(nums)
+    assert got == want
+
+
+@pytest.mark.parametrize(
+    ("s", "t", "want"),
+    [("designgurus", "garumdespgn", 3), ("abc", "def", 3), ("listen", "silent", 0)],
+)
+def test_min_steps_to_make_anagram(s, t, want):
+    got = cp.min_steps_to_make_anagram(s, t)
     assert got == want

@@ -77,3 +77,23 @@ def min_steps_to_make_array_unique(nums: List[int]) -> int:
         min_moves += excess
 
     return min_moves
+
+
+def min_steps_to_make_anagram(s: str, t: str) -> int:
+    frequencies = {}
+
+    for c in s:
+        frequencies[c] = frequencies.get(c, 0) - 1
+
+    for c in t:
+        frequencies[c] = frequencies.get(c, 0) + 1
+
+    steps = 0
+
+    for _, v in frequencies.items():
+        if v <= 0:
+            continue
+
+        steps += 1
+
+    return steps
