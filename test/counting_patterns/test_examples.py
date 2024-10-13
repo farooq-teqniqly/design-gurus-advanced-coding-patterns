@@ -1,6 +1,7 @@
 import pytest
 
 import counting_patterns.examples as cp
+from counting_patterns.examples import min_increment_to_make_array_unique
 
 
 @pytest.mark.parametrize(
@@ -50,3 +51,16 @@ def test_get_total_max_frequencies(nums, want):
 def test_get_max_population_year(logs, want):
     got = cp.get_max_population_year(logs, 1950, 2050)
     assert want == got
+
+
+@pytest.mark.parametrize(
+    ("nums", "want"),
+    [
+        ([4, 3, 2, 2, 1, 4], 5),
+        ([5, 5, 5, 5, 5], 10),
+        ([1, 1, 1, 1, 2], 9),
+    ],
+)
+def test_min_increment_to_make_array_unique(nums, want):
+    got = min_increment_to_make_array_unique(nums)
+    assert got == want

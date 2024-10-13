@@ -52,3 +52,28 @@ def get_max_population_year(
             max_index = i
 
     return start_year + max_index
+
+
+def min_increment_to_make_array_unique(nums: List[int]) -> int:
+    max_value = -1
+
+    for n in nums:
+        if n > max_value:
+            max_value = n
+
+    frequencies = [0] * (len(nums) + max_value)
+
+    for n in nums:
+        frequencies[n] += 1
+
+    min_moves = 0
+
+    for i, n in enumerate(frequencies):
+        if n <= 1:
+            continue
+
+        excess = frequencies[i] - 1
+        frequencies[i + 1] += excess
+        min_moves += excess
+
+    return min_moves
